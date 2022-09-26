@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleafe.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Series Overview</title>
+    <link rel="stylesheet" type="text/css" href="css/series.css">
+</head>
+<body>
+<h1>Series overview</h1>
+<p>Hieronder volgt een overzicht van alle series die in de database staan.</p>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Actor</th>
+    </tr>
+    <tr th:each="series : ${allSeries}">
+        <td th:text="${series.seriesId}"></td></td>
+        <td th:text="${series.title}"></td></td>
+        <td th:text="${series.actor}"></td></td>
+    </tr>
+</table>
+</body>
+</html>
