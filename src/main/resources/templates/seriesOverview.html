@@ -12,12 +12,14 @@
     <tr>
         <th>Id</th>
         <th>Title</th>
-        <th>Actor</th>
+        <th>Genre</th>
+        <th>First aired</th>
     </tr>
     <tr th:each="series : ${allSeries}">
         <td th:text="${series.seriesId}"></td></td>
         <td th:text="${series.title}"></td></td>
-        <td th:text="${series.actor}"></td></td>
+        <td th:text="${series.genre}"></td></td>
+        <td th:text="${series.firstAired}"></td></td>
     </tr>
 </table>
 </body>
