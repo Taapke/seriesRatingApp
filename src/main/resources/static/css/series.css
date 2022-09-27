@@ -22,5 +22,9 @@ th, td {
 
 tr:hover {background-color: cornflowerblue;}
 tr:first-child:hover {
-    background-color: white;
+    background-color: darkslategrey;
+}
+
+input[type=submit] {
+
 }

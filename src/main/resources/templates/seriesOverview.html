@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Series Overview</title>
-    <link rel="stylesheet" type="text/css" href="css/series.css">
+    <link rel="stylesheet" type="text/css" href="/css/series.css">
 </head>
 <body>
 <h1>Series overview</h1>
 <p>Hieronder volgt een overzicht van alle series die in de database staan.</p>
 <table>
     <tr>
-        <th>Id</th>
         <th>Title</th>
-        <th>Genre</th>
-        <th>First aired</th>
+        <th>Season</th>
+        <th>Number of episodes</th>
     </tr>
     <tr th:each="series : ${allSeries}">
-        <td th:text="${series.seriesId}"></td></td>
         <td th:text="${series.title}"></td></td>
-        <td th:text="${series.genre}"></td></td>
-        <td th:text="${series.firstAired}"></td></td>
+        <td th:text="${series.season}"></td></td>
+        <td th:text="${series.episodesNumber}"></td></td>
+        <td><a th:href="@{/series/update/{title}(title=${series.title})}">Edit</a></td>
     </tr>
 </table>
+<a th:href="@{/series/new}">Add new series</a>
 </body>
 </html>
