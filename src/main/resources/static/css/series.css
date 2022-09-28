@@ -1,4 +1,6 @@
 body {
+    width: max-content;
+    margin: auto;
     font-family: Verdana;
     font-size: medium;
 }

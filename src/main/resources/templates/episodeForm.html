@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https:www.//thymeleafe.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New episode</title>
+    <link rel="stylesheet" type="text/css" href="/css/series.css">
+</head>
+<body>
+<h1>Create new episode</h1>
+<form th:action="@{/series/season/episode/new}" method="post" th:object="${episode}">
+    <table>
+        <input type="hidden" th:field="*{episodeId}"/>
+        <tr>
+            <td>Title</td>
+            <td><input type="text" th:field="*{title}"/>
+        </tr>
+        <tr>
+            <td>Episode number</td>
+            <td><input type="text" th:field="*{episodeNumber}"/>
+        </tr>
+        <tr>
+            <td>Rating</td>
+            <td><input type="text" th:field="*{rating}"/>
+        </tr>
+
+    </table>
+    <input type="submit" value="submit episode" />
+</form>
+
+</body>
+</html>

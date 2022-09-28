@@ -6,8 +6,10 @@ import lombok.Setter;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.time.Year;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author Taapke Bergsma <t.bergsma@st.hanze.nl>
@@ -18,9 +20,12 @@ public class Series {
     @Id
     @GeneratedValue
     private Long seriesId;
-
     private String title;
-    private int season;
-    private int episodesNumber;
 
+    @OneToMany(mappedBy = "series")
+    private List<Season> seasons;
+
+    public int getNumberOfSeasons() {
+        return seasons.size();
+    }
 }

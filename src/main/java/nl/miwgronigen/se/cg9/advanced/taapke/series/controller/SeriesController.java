@@ -43,7 +43,6 @@ public class SeriesController {
     protected String showUpdateBookForm(@PathVariable("seriesTitle") String seriesTitle, Model model) {
         Optional<Series> series = seriesRepository.findByTitle(seriesTitle);
         if (series.isEmpty()) {
-            System.out.println("series is empty");
             return "redirect:/series/overview";
         }
         model.addAttribute("series", series.get());
