@@ -6,24 +6,26 @@ import lombok.Setter;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import java.time.Year;
-import java.util.Date;
-import java.util.List;
+import javax.persistence.ManyToOne;
+import java.time.LocalDateTime;
 
 /**
  * @author Taapke Bergsma <t.bergsma@st.hanze.nl>
  */
-@Entity @Getter
+
+@Entity
+@Getter
 @Setter
-public class Series {
+public class Rating {
     @Id
     @GeneratedValue
-    private Long seriesId;
-    private String title;
-    private Integer numberOfSeasons;
+    Long ratingId;
 
-    @OneToMany(mappedBy = "series")
-    private List<Season> seasons;
+    private LocalDateTime localDateTime;
+    private Double score;
+    private String notes;
+
+    @ManyToOne
+    private Episode episode;
 
 }

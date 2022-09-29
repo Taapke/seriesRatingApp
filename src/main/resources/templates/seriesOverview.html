@@ -20,7 +20,7 @@
         <td th:text="${series.title}"></td></td>
         <td th:text="${series.getNumberOfSeasons}"></td></td>
         <td><a th:href="@{/series/update/{title}(title=${series.title})}">Edit</a></td>
-        <td><a th:href="@{/season/new/{seriesId}(seriesId=${series.seriesId})}">Voeg seizoen toe</a></td>
+        <td><a th:href="@{/series/details/{title}(title=${series.title})}">Details</a></td>
     </tr>
 </table>
 <a th:href="@{/series/new}">Add new series</a>

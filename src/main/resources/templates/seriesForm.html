@@ -9,11 +9,15 @@
 
 <h1>Create new series</h1>
 <form th:action="@{/series/new}" method="post" th:object="${series}">
+    <input type="hidden" th:field="*{seriesId}"/>
     <table>
-        <input type="hidden" th:field="*{seriesId}"/>
         <tr>
-            <td>Titel</td>
+            <td>Title</td>
             <td><input type="text" th:field="*{title}"/>
+        </tr>
+        <tr>
+            <td>Number of seasons</td>
+            <td><input type="number"  min="1" max ="100" step="1" th:field="*{numberOfSeasons}"></td>
         </tr>
 
     </table>
