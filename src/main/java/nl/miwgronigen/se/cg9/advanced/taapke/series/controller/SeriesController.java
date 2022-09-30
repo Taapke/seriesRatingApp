@@ -1,6 +1,7 @@
 package nl.miwgronigen.se.cg9.advanced.taapke.series.controller;
 
 import nl.miwgronigen.se.cg9.advanced.taapke.series.model.Series;
+import nl.miwgronigen.se.cg9.advanced.taapke.series.repository.SeasonRepository;
 import nl.miwgronigen.se.cg9.advanced.taapke.series.repository.SeriesRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,9 +21,11 @@ import java.util.Optional;
 public class SeriesController {
 
     private final SeriesRepository seriesRepository;
+    private final SeasonRepository seasonRepository;
 
-    public SeriesController(SeriesRepository seriesRepository) {
+    public SeriesController(SeriesRepository seriesRepository, SeasonRepository seasonRepository) {
         this.seriesRepository = seriesRepository;
+        this.seasonRepository = seasonRepository;
     }
 
     @GetMapping({"/","/series/overview"})

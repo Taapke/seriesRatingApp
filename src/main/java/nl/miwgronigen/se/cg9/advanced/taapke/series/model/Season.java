@@ -15,6 +15,8 @@ public class Season {
     @Id @GeneratedValue
     Long seasonId;
 
+    private Integer seasonNumber;
+
     @ManyToOne
     private Series series;
 

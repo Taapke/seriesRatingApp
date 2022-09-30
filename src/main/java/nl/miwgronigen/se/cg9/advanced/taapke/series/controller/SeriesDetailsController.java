@@ -1,5 +1,6 @@
 package nl.miwgronigen.se.cg9.advanced.taapke.series.controller;
 
+import nl.miwgronigen.se.cg9.advanced.taapke.series.model.Season;
 import nl.miwgronigen.se.cg9.advanced.taapke.series.model.Series;
 import nl.miwgronigen.se.cg9.advanced.taapke.series.repository.EpisodeRepository;
 import nl.miwgronigen.se.cg9.advanced.taapke.series.repository.RatingRepository;
@@ -40,6 +41,7 @@ public class SeriesDetailsController {
             System.out.println("is empty");
             return "redirect:/series/overview";
         }
+        model.addAttribute("season", new Season());
         model.addAttribute("series", series.get());
         return "seriesDetails";
     }

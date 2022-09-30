@@ -7,18 +7,30 @@
 </head>
 <body>
 <h1 th:text="${series.title}"></h1>
-<p>Hieronder volgt een overzicht van alle series die in de database staan.</p>
+<form th:action="@{/series/season/new}" method ="post" th:object="${season}">
+    <input type="hidden" th:field="*{seasonId}"/>
+    <input type="hidden" th:field="*{series}"/>
+    <input type="number"  min="1" max ="100" step="1" th:field="*{seasonNumber}">
+    <input type="submit" value="Save season" />
+</form>
+<!--<td><input type="number"  min="1" max ="100" step="1" th:field="*{numberOfSeasons}"></td>-->
+<!--<form th:action="@{/series/season/new}" method="post" th:object="${season}">-->
+<!--    <input type="hidden" th:field="*${seasonId}"/>-->
+<!--    <input type="hidden" th:field=*${series}" th:value="${series}"/>-->
+
+<!--        <input type="number" th:field="*{seasonNumber}"/>-->
+<!--</form>-->
+
 <table>
+    <tr><td type="text">Seasons</td></tr>
+    <tr th:each="season : ${series.seasons}" >
+        <th th:value="${season.seasonNumber}" th:text="'Season ' + ${season.seasonNumber}"></th>
+<!--        <td><a th:href="@{/series/season/{seasonId}(series.season.get(${i}})}}">Add episodes</a></td>-->
+    </tr>
 
+    <tr>
 
-
-<!--    <tr th:each="series : ${allSeries}">-->
-<!--        <td th:text="${series.title}"></td></td>-->
-<!--        <td th:text="${series.getNumberOfSeasons}"></td></td>-->
-<!--        <td><a th:href="@{/series/update/{title}(title=${series.title})}">Edit</a></td>-->
-<!--        <td><a th:href="@{/series/details/{title}(title=${series.title})}">Details</a></td>-->
-<!--    </tr>-->
-
+    </tr>
 
 </table>
 </body>
