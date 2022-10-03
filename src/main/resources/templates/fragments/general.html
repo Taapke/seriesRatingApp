@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleafe.org">
+<head th:fragment="baseHeader(title)">
+    <meta charset="UTF-8">
+    <title th:replace="${title}">General title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" href="/css/series.css">
+</head>
+<body>
+<div th:fragment="navbar">
+    <ul class="nav justify-content-center">
+        <li class="'nav-item">
+            <a class="nav-link" th:href="@{/}">Home</a>
+            <!--            nog meer navigatie linkjes naar andere pagina's toevoegen-->
+        </li>
+    </ul>
+</div>
+<div class="container">
+    <h1>Series overview</h1>
+    <p>Hieronder volgt een overzicht van alle series die in de database staan.</p>
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Aantal seizoenen</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr th:each="series : ${allSeries}">
+            <td th:text="${series.title}"></td></td>
+            <td th:text="${series.getNumberOfSeasons}"></td></td>
+            <td><a th:href="@{/series/update/{title}(title=${series.title})}">Edit</a></td>
+            <td><a th:href="@{/series/details/{title}(title=${series.title})}">Details</a></td>
+        </tr>
+    </table>
+    <a th:href="@{/series/new}">Add new series</a>
+</div>
+<div th:fragment="footer">
+    <footer><p class="text-center text text-muted">Copyright Taapke Bergsma &copy;2022</p></footer>
+</div>
+<div th:fragment="bottomScripts">
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</div>
+</body>
+</html>

@@ -35,13 +35,15 @@ public class SeriesDetailsController {
 
     @GetMapping("/series/details/{seriesTitle}")
     protected String showDetailsSeries(@PathVariable("seriesTitle") String seriesTitle, Model model) {
-        System.out.println("details clicked");
         Optional<Series> series = seriesRepository.findByTitle(seriesTitle);
         if (series.isEmpty()) {
             System.out.println("is empty");
             return "redirect:/series/overview";
         }
-        model.addAttribute("season", new Season());
+
+        Season season = new Season();
+        season.setSeries(series.get());
+        model.addAttribute("season", season);
         model.addAttribute("series", series.get());
         return "seriesDetails";
     }

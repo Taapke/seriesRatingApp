@@ -25,10 +25,16 @@ public class SeasonController {
         this.seriesRepository = seriesRepository;
     }
 
-    @PostMapping("/series/season/new")
-    protected String saveSeason(@ModelAttribute("season") Season season, BindingResult result) {
-        if (!result.hasErrors()) {
+
+
+    @PostMapping("/series/season/{seriesTitle}")
+    protected String saveSeason(@PathVariable("seriesTitle") String seriesTitle,
+                                @ModelAttribute("season") Season season, BindingResult result) {
+        Optional<Series> series = seriesRepository.findByTitle(seriesTitle);
+        if (series.isPresent()) {
+            season.setSeries(series.get());
             seasonRepository.save(season);
+
         }
         return "redirect:/series/overview";
     }

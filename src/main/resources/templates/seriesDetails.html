@@ -6,21 +6,14 @@
     <link rel="stylesheet" type="text/css" href="/css/series.css">
 </head>
 <body>
+<div th:replace="fragments/general :: navbar"></div>
+
 <h1 th:text="${series.title}"></h1>
-<form th:action="@{/series/season/new}" method ="post" th:object="${season}">
+<form th:action="@{/series/season/{title}(title=${series.title})}" method ="post" th:object="${season}">
     <input type="hidden" th:field="*{seasonId}"/>
-    <input type="hidden" th:field="*{series}"/>
     <input type="number"  min="1" max ="100" step="1" th:field="*{seasonNumber}">
     <input type="submit" value="Save season" />
 </form>
-<!--<td><input type="number"  min="1" max ="100" step="1" th:field="*{numberOfSeasons}"></td>-->
-<!--<form th:action="@{/series/season/new}" method="post" th:object="${season}">-->
-<!--    <input type="hidden" th:field="*${seasonId}"/>-->
-<!--    <input type="hidden" th:field=*${series}" th:value="${series}"/>-->
-
-<!--        <input type="number" th:field="*{seasonNumber}"/>-->
-<!--</form>-->
-
 <table>
     <tr><td type="text">Seasons</td></tr>
     <tr th:each="season : ${series.seasons}" >

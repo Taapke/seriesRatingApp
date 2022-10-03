@@ -21,9 +21,17 @@ public class Series {
     @GeneratedValue
     private Long seriesId;
     private String title;
-    private Integer numberOfSeasons;
 
     @OneToMany(mappedBy = "series")
     private List<Season> seasons;
+
+    public int getNumberOfSeasons(){
+        int count = 0;
+        for (Season season :seasons) {
+            count++;
+        }
+        System.out.println("number of copies: " + count);
+        return count;
+    }
 
 }
