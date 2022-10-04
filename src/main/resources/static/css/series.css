@@ -1,5 +1,4 @@
 body {
-    margin: auto;
     font-family: Verdana;
     font-size: medium;
     margin-bottom: 60px; /
@@ -10,14 +9,7 @@ html {
     min-height: 100%;
 }
 
-body {
 
-}
-
-table {
-    margin-left: auto;
-    margin-right: auto;
-}
 
 th {
     height: 70px;
@@ -33,9 +25,6 @@ tr:first-child {
     background-color: lightblue;
 }
 
-input[type=submit] {
-
-}
 
 .footer {
     position: absolute;

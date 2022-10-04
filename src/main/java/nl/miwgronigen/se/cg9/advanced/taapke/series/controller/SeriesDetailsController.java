@@ -33,15 +33,12 @@ public class SeriesDetailsController {
         this.ratingRepository = ratingRepository;
     }
 
-
     @GetMapping("/series/details/{seriesTitle}")
     protected String showDetailsSeries(@PathVariable("seriesTitle") String seriesTitle, Model model) {
         Optional<Series> series = seriesRepository.findByTitle(seriesTitle);
         if (series.isEmpty()) {
-            System.out.println("is empty");
             return "redirect:/series/overview";
         }
-
         Season season = new Season();
         Episode episode = new Episode();
         season.setSeries(series.get());

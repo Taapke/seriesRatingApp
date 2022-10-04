@@ -31,14 +31,12 @@ public class EpisodeController {
     @PostMapping("/series/{seasonId}")
     protected String saveSeason(@PathVariable("seasonId") Long seasonId,
                                 @ModelAttribute("episode") Episode episode, BindingResult result) {
-
         Optional<Season> season = seasonRepository.findById(seasonId);
         if (season.isPresent()) {
             episode.setSeason(season.get());
             episodeRepository.save(episode);
-
         }
-        return "redirect:/series/overview";
+        return String.format("redirect:/series/overview");
     }
 
 }

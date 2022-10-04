@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,6 +22,6 @@ public class Season {
     private Series series;
 
     @OneToMany(mappedBy = "season")
-    private List<Episode> episodes;
+    private List<Episode> episodes = new ArrayList<>();
 
 }

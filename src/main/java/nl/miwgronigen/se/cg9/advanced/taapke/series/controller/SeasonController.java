@@ -25,9 +25,7 @@ public class SeasonController {
         this.seriesRepository = seriesRepository;
     }
 
-
-
-    @PostMapping("/series/season/{seriesTitle}")
+    @PostMapping("/season/{seriesTitle}")
     protected String saveSeason(@PathVariable("seriesTitle") String seriesTitle,
                                 @ModelAttribute("season") Season season, BindingResult result) {
         Optional<Series> series = seriesRepository.findByTitle(seriesTitle);
