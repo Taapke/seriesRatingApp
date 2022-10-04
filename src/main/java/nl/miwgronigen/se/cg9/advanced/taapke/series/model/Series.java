@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.time.Year;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class Series {
     private String title;
 
     @OneToMany(mappedBy = "series")
-    private List<Season> seasons;
+    private List<Season> seasons = new ArrayList<>();
 
     public int getNumberOfSeasons(){
         int count = 0;

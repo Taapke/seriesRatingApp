@@ -1,5 +1,6 @@
 package nl.miwgronigen.se.cg9.advanced.taapke.series.controller;
 
+import nl.miwgronigen.se.cg9.advanced.taapke.series.model.Episode;
 import nl.miwgronigen.se.cg9.advanced.taapke.series.model.Season;
 import nl.miwgronigen.se.cg9.advanced.taapke.series.model.Series;
 import nl.miwgronigen.se.cg9.advanced.taapke.series.repository.EpisodeRepository;
@@ -42,9 +43,11 @@ public class SeriesDetailsController {
         }
 
         Season season = new Season();
+        Episode episode = new Episode();
         season.setSeries(series.get());
         model.addAttribute("season", season);
         model.addAttribute("series", series.get());
+        model.addAttribute("episode", episode);
         return "seriesDetails";
     }
 }

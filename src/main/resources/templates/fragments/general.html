@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://thymeleafe.org">
+<html lang="en" xmlns:th="https://thymeleafe.org" xmlns:sec="https://thymeleafe.org">
 <head th:fragment="baseHeader(title)">
     <meta charset="UTF-8">
     <title th:replace="${title}">General title</title>
@@ -12,6 +12,13 @@
         <li class="'nav-item">
             <a class="nav-link" th:href="@{/}">Home</a>
             <!--            nog meer navigatie linkjes naar andere pagina's toevoegen-->
+            <!--            isAuthenticated() kan ik ook nog toevoegen aan nieuwe links-->
+        </li>
+        <li class="nav-item" sec:authorize="isAnonymous()">
+            <a class="nav-link" th:href="@{/login}">Login</a>
+        </li>
+        <li class="nav-item" sec:authorize="isAuthenticated()">
+            <a class="nav-link" th:href="@{/logout}">Logout <span sec:authentication="name"></span></a>
         </li>
     </ul>
 </div>
@@ -35,8 +42,8 @@
     </table>
     <a th:href="@{/series/new}">Add new series</a>
 </div>
-<div th:fragment="footer">
-    <footer><p class="text-center text text-muted">Copyright Taapke Bergsma &copy;2022</p></footer>
+<div th:fragment="footer" >
+    <footer class="footer"><p class="text-center text text-muted">Copyright Taapke Bergsma &copy;2022</p></footer>
 </div>
 <div th:fragment="bottomScripts">
 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>

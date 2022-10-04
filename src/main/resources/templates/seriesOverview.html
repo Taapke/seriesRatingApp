@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://thymeleafe.org">
+<html lang="en" xmlns:th="https://thymeleafe.org" xmlns:sec="https://thymeleafe.org">
 <head th:replace="fragments/general :: baseHeader(~{:: title})">
     <title>Series Overview</title>
 </head>
 <body>
 <div th:replace="fragments/general :: navbar"></div>
 <div class="container">
-<h1>Series overview</h1>
-<p>Hieronder volgt een overzicht van alle series die in de database staan.</p>
-<table>
+<table class="table">
     <tr>
         <th>Title</th>
         <th>Aantal seizoenen</th>
@@ -23,7 +21,9 @@
         <td><a th:href="@{/series/details/{title}(title=${series.title})}">Details</a></td>
     </tr>
 </table>
-<a th:href="@{/series/new}">Add new series</a>
+    <div sec:authorize="isAuthenticated()">
+        <a th:href="@{/series/new}">Add new series</a>
+    </div>
 </div>
 <div th:replace="fragments/general :: footer"></div>
 <div th:replace="fragments/general :: bottomScripts"></div>
