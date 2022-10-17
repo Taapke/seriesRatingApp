@@ -5,9 +5,10 @@ import nl.miwgronigen.se.cg9.advanced.taapke.series.model.Series;
 import nl.miwgronigen.se.cg9.advanced.taapke.series.repository.SeasonRepository;
 import nl.miwgronigen.se.cg9.advanced.taapke.series.repository.SeriesRepository;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Optional;
 
@@ -34,7 +35,9 @@ public class SeasonController {
             seasonRepository.save(season);
 
         }
-        return "redirect:/series/overview";
+
+        String redirect = String.format("redirect:/series/details/%s", seriesTitle);
+        return (redirect);
     }
 
 

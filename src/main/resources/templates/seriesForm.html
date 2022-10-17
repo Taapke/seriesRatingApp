@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://thymeleafe.org" xmlns:sec="https://thymeleafe.org">
+<html lang="en" xmlns:th="https://thymeleaf.org" xmlns:sec="https://thymeleaf.org">
 <head th:replace="fragments/general :: baseHeader(~{:: title})">
     <title>Series form</title>
 </head>
@@ -9,15 +9,10 @@
     <h1>Create new series</h1>
     <form th:action="@{/series/new}" method="post" th:object="${series}">
         <input type="hidden" th:field="*{seriesId}"/>
-        <table>
-            <tr>
-                <td>Title</td>
-                <td><input type="text" th:field="*{title}"/>
-            </tr>
-            <tr>
-                <td>Number of seasons</td>
-            </tr>
-        </table>
+            <div class="mb-3">
+                <label class="form-label">Title</label>
+                <input type="text" class="form-control" placeholder="Title" th:field="*{title}">
+            </div>
         <input type="submit" value="submit series" />
     </form>
 </div>

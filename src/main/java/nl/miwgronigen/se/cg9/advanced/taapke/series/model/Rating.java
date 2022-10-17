@@ -22,7 +22,10 @@ public class Rating {
     Long ratingId;
 
     private LocalDateTime localDateTime;
-    private Double score;
+    private Integer emotionalHook;
+    private Integer characterDevelopment;
+    private Integer storyDevelopment;
+    private Integer candy;
     private String notes;
 
     @ManyToOne

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://thymeleafe.org" xmlns:sec="https://thymeleafe.org">
+<html lang="en" xmlns:th="https://thymeleaf.org" xmlns:sec="https://thymeleaf.org">
 <head th:replace="fragments/general :: baseHeader(~{:: title})">
     <title>Rating</title>
 </head>
@@ -7,24 +7,55 @@
 <div th:replace="fragments/general :: navbar"></div>
 <div class="container">
 
-    <h1 th:text="${episode.episodeNumber}"></h1>
+    <h1>Episode <span th:text="${episode.episodeNumber}"/></h1>
 
     <form th:action="@{/rating/{episodeId}(episodeId=${episode.episodeId})}" method="post" th:object="${rating}">
         <input type="hidden" th:field="*{ratingId}"/>
         <table>
             <tr>
-                <td>Rating</td>
-                <input type="number" min="1" max="100" step="1" th:field="*{score}">
+                <th></th>
+                <th>Awful</th>
+                <th>Poor</th>
+                <th>Medium</th>
+                <th>Good</th>
+                <th>Excellent</th>
             </tr>
             <tr>
-                <td>Notes</td>
-                <input type="text" th:field="*{notes}"/>
+                <th scope="row">Story development</th>
+                <td th:each="i: ${#numbers.sequence(1, 5)}">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" th:value="${i}" th:field="*{storyDevelopment}">
+                    </div>
+                </td>
             </tr>
-
+            <tr>
+                <th scope="row">Character development</th>
+                <td th:each="i: ${#numbers.sequence(1, 5)}">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" th:value="${i}" th:field="*{characterDevelopment}">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">Emotional hook</th>
+                <td th:each="i: ${#numbers.sequence(1, 5)}">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" th:value="${i}" th:field="*{emotionalHook}">
+                    </div>
+                </td>
+            </tr>
         </table>
+
+        <div class="form-check">
+            <label class="form-check-label">Candy?</label>
+            <input class="form-check-input" type="checkbox" th:value="1" th:field="*{candy}">
+        </div>
+        <div>
+            <label class="form-label">Notes</label>
+            <textarea class="form-control" type="text" th:field="*{notes}" rows="3"></textarea>
+        </div>
         <input type="submit" value="submit rating"/>
     </form>
-
 
 </div>
 <div th:replace="fragments/general :: footer"></div>

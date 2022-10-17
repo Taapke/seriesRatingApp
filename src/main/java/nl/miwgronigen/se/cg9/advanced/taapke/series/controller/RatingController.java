@@ -2,7 +2,6 @@ package nl.miwgronigen.se.cg9.advanced.taapke.series.controller;
 
 import nl.miwgronigen.se.cg9.advanced.taapke.series.model.Episode;
 import nl.miwgronigen.se.cg9.advanced.taapke.series.model.Rating;
-import nl.miwgronigen.se.cg9.advanced.taapke.series.model.Series;
 import nl.miwgronigen.se.cg9.advanced.taapke.series.repository.EpisodeRepository;
 import nl.miwgronigen.se.cg9.advanced.taapke.series.repository.RatingRepository;
 import org.springframework.stereotype.Controller;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
@@ -54,7 +52,9 @@ public class RatingController {
             rating.setEpisode(episode.get());
             ratingRepository.save(rating);
         }
-        return ("redirect:/series/overview");
+        String seriesTitle = episode.get().getSeason().getSeries().getTitle();
+        String redirect = String.format("redirect:/series/details/%s", seriesTitle);
+        return (redirect);
     }
 
 }

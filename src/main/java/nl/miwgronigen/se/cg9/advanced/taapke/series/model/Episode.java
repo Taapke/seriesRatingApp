@@ -1,6 +1,5 @@
 package nl.miwgronigen.se.cg9.advanced.taapke.series.model;
 
-import jdk.jfr.Enabled;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,12 +24,4 @@ public class Episode {
 
     @OneToMany(mappedBy = "episode")
     private List<Rating> ratings = new ArrayList<>();
-
-    public double getAverageRating() {
-        return ratings.stream()
-                .mapToDouble(Rating::getScore)
-                .average()
-                .orElse(0.0);
-
-    }
 }
